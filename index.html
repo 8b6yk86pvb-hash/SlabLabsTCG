@@ -3,128 +3,223 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Premium Retail Sourcing Suite</title>
+    <title>SlabLabsTCG | Premium Sourcing Matrix</title>
     <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Arial', sans-serif;
+        * { 
+            box-sizing: border-box; 
+            margin: 0; 
+            padding: 0; 
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; 
         }
-        body {
-            background-color: #0A0A0C;
-            color: #FFFFFF;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            padding: 20px;
+        body { 
+            background: radial-gradient(circle at top, #14161E 0%, #0A0B0E 100%); 
+            color: #F4F4F6; 
+            min-height: 100vh; 
+            padding: 80px 20px; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
         }
-        .container {
+        header { 
+            text-align: center; 
+            margin-bottom: 60px; 
             max-width: 600px;
-            width: 100%;
-            background: #121216;
-            border: 1px solid #1E1E24;
-            border-radius: 16px;
-            padding: 40px;
-            text-align: center;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
-        h1 {
-            font-size: 28px;
-            font-weight: 800;
-            color: #1E90FF;
-            margin-bottom: 10px;
-            text-transform: uppercase;
+        header h1 { 
+            font-size: 38px; 
+            font-weight: 800; 
+            color: #38BDF8; 
+            text-transform: uppercase; 
+            letter-spacing: 2px;
+            text-shadow: 0 0 20px rgba(56, 189, 248, 0.2);
+        }
+        header p { 
+            color: #94A3B8; 
+            font-size: 16px; 
+            margin-top: 14px; 
+            line-height: 1.6;
+        }
+        .pricing-grids { 
+            display: flex; 
+            gap: 30px; 
+            max-width: 900px; 
+            width: 100%; 
+            justify-content: center; 
+            flex-wrap: wrap; 
+        }
+        .card { 
+            background: rgba(22, 28, 45, 0.4); 
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.05); 
+            border-radius: 20px; 
+            padding: 40px 30px; 
+            width: 100%; 
+            max-width: 400px; 
+            display: flex; 
+            flex-direction: column; 
+            justify-content: space-between; 
+            position: relative; 
+            transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease; 
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(56, 189, 248, 0.3);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+        }
+        .card.premium { 
+            background: rgba(30, 27, 55, 0.4);
+        }
+        .card.premium:hover {
+            border-color: rgba(168, 85, 247, 0.3);
+        }
+        .badge { 
+            position: absolute; 
+            top: -12px; 
+            right: 25px; 
+            background: linear-gradient(135deg, #A855F7, #7E22CE); 
+            color: #ffffff; 
+            font-size: 11px; 
+            font-weight: 700; 
+            padding: 4px 14px; 
+            border-radius: 20px; 
+            text-transform: uppercase; 
+            letter-spacing: 1px;
+            box-shadow: 0 4px 12px rgba(168, 85, 247, 0.3);
+        }
+        h2 { 
+            font-size: 24px; 
+            font-weight: 700;
+            color: #38BDF8; 
+            margin-bottom: 12px; 
+            text-transform: uppercase; 
             letter-spacing: 1px;
         }
-        .tagline {
-            color: #A0A0AB;
-            font-size: 16px;
-            margin-bottom: 30px;
+        .card.premium h2 {
+            color: #A855F7;
         }
-        .features {
-            text-align: left;
-            background: #181820;
-            padding: 20px;
-            border-radius: 12px;
-            margin-bottom: 35px;
-            border-left: 4px solid #1E90FF;
+        .description { 
+            color: #64748B; 
+            font-size: 14px; 
+            margin-bottom: 30px; 
+            min-height: 44px;
+            line-height: 1.5;
         }
-        .feature-item {
-            margin-bottom: 12px;
-            font-size: 14px;
-            color: #E4E4E7;
+        .price { 
+            font-size: 44px; 
+            font-weight: 800; 
+            color: #FFFFFF;
+            margin-bottom: 30px; 
             display: flex;
-            align-items: center;
+            align-items: baseline;
         }
-        .feature-item:last-child {
-            margin-bottom: 0;
+        .price span { 
+            font-size: 15px; 
+            color: #64748B; 
+            font-weight: 400;
+            margin-left: 6px;
         }
-        .feature-item span {
-            color: #32CD32;
-            margin-right: 10px;
-            font-weight: bold;
+        .features { 
+            list-style: none; 
+            margin-bottom: 35px; 
+            text-align: left; 
         }
-        .pricing-box {
-            margin-bottom: 30px;
+        .features li { 
+            font-size: 14px; 
+            color: #E2E8F0; 
+            margin-bottom: 16px; 
+            display: flex; 
+            align-items: center; 
         }
-        .price {
-            font-size: 48px;
-            font-weight: 800;
-            color: #FFFFFF;
-        }
-        .price-sub {
-            font-size: 14px;
-            color: #A0A0AB;
-        }
-        .cta-btn {
-            display: inline-block;
-            width: 100%;
-            padding: 16px 20px;
-            background: linear-gradient(135deg, #1E90FF, #00BFFF);
-            color: #FFFFFF;
-            text-decoration: none;
-            font-weight: bold;
+        .features li span { 
+            color: #10B981; 
+            margin-right: 12px; 
+            font-weight: bold; 
             font-size: 16px;
-            border-radius: 8px;
-            transition: transform 0.2s, box-shadow 0.2s;
-            box-shadow: 0 4px 15px rgba(30,144,255,0.3);
         }
-        .cta-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(30,144,255,0.5);
+        .cta-btn { 
+            display: block; 
+            text-align: center; 
+            width: 100%; 
+            padding: 16px; 
+            color: #FFFFFF; 
+            text-decoration: none; 
+            font-weight: 700; 
+            font-size: 15px;
+            border-radius: 10px; 
+            transition: opacity 0.2s ease, transform 0.2s ease; 
         }
-        .requirements {
-            margin-top: 25px;
-            font-size: 12px;
-            color: #71717A;
+        .cta-btn:active {
+            transform: scale(0.98);
+        }
+        .standard .cta-btn { 
+            background: linear-gradient(135deg, #38BDF8, #0284C7); 
+            box-shadow: 0 4px 15px rgba(56, 189, 248, 0.2);
+        }
+        .premium .cta-btn { 
+            background: linear-gradient(135deg, #A855F7, #6B21A8); 
+            box-shadow: 0 4px 15px rgba(168, 85, 247, 0.2);
+        }
+        .disabled-btn { 
+            background: #1E293B !important; 
+            color: #475569 !important; 
+            cursor: not-allowed; 
+            box-shadow: none !important;
+        }
+        .footer-specs { 
+            margin-top: 80px; 
+            color: #475569; 
+            font-size: 12px; 
+            text-align: center; 
+            max-width: 600px; 
+            line-height: 1.6;
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <h1>Premium Sourcing Suite</h1>
-        <p class="tagline">Automated high-speed stock monitoring & procurement notification framework.</p>
-        
-        <div class="features">
-            <div class="feature-item"><span>✓</span> Lightweight native extraction architecture uses zero background RAM</div>
-            <div class="feature-item"><span>✓</span> Instantaneous web request tracking loop mechanics checking stock every 5s</div>
-            <div class="feature-item"><span>✓</span> Hands-free automated Discord alert delivery terminal connection channels</div>
-            <div class="feature-item"><span>✓</span> Full visual split-tab macOS dashboard with secure local layout buffers</div>
+    <header>
+        <h1>SlabLabsTCG</h1>
+        <p>Industrial-grade retail data extraction tools. Built with a lightweight footprint to deliver instant restock data directly to your dashboard.</p>
+    </header>
+
+    <div class="pricing-grids">
+        <!-- TIER 1: STANDARD SOURCING MONITOR -->
+        <div class="card standard">
+            <div>
+                <h2>Sourcing Monitor</h2>
+                <p class="description">High-speed stock scraping array with localized native system execution loops.</p>
+                <div class="price">$30.00<span> / month</span></div>
+                <ul class="features">
+                    <li><span>✓</span> Scrapes retail store arrays every 5s</li>
+                    <li><span>✓</span> Ultra-lightweight native console footprint</li>
+                    <li><span>✓</span> Real-time Discord webhook logging alerts</li>
+                    <li><span>✓</span> Secured local hard-drive form caching</li>
+                </ul>
+            </div>
+            <!-- YOUR LIVE INTEGRATED STRIPE CHECKOUT LINK -->
+            <a href="https://stripe.com" class="cta-btn">🚀 Subscribe to Monitor</a>
         </div>
 
-        <div class="pricing-box">
-            <div class="price">$30.00<span class="price-sub"> / month</span></div>
-            <p class="price-sub">Flat-rate standard subscription tier. Cancel anytime.</p>
+        <!-- TIER 2: ADVANCED AUTOMATED CHECKOUT BOT (FUTURE TIER) -->
+        <div class="card premium">
+            <div class="badge">Coming Soon</div>
+            <div>
+                <h2>AIO Auto-Buy Suite</h2>
+                <p class="description">Autonomous local checkout engine that automatically intercepts and purchases stock for you.</p>
+                <div class="price">$90.00<span> / month</span></div>
+                <ul class="features">
+                    <li><span>✓</span> Includes all standard tracking frameworks</li>
+                    <li><span>✓</span> Autonomous local checkout payment injection</li>
+                    <li><span>✓</span> Automated add-to-cart request bypass</li>
+                    <li><span>✓</span> Dedicated multithreading priority lanes</li>
+                </ul>
+            </div>
+            <a href="#" class="cta-btn disabled-btn">🔒 Development Ongoing</a>
         </div>
-
-        <!-- 💰 YOUR LIVE STRIPE LINK INTEGRATED SUCCESSFULLY -->
-        <a href="https://buy.stripe.com/test_dRm8wR9iv3nZbTSecI8ww00" class="cta-btn">🚀 Secure Access Instantly</a>
-
-        <p class="requirements">System Requirements: macOS 10.15 or newer. Independent cloud licensing keys delivered instantly over Discord API paths upon checkout confirmation.</p>
     </div>
+
+    <p class="footer-specs">System Requirements: macOS 10.15 or newer required for local tracking utilities. Core configuration and licensing frameworks managed safely over encrypted cloud database arrays.</p>
 
 </body>
 </html>
